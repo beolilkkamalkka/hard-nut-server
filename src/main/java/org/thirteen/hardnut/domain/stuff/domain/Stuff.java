@@ -25,7 +25,7 @@ public class Stuff extends BaseTimeEntity {
     private Long usedYear;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
+    @Column
     private StuffStatus status;
 
     @Builder
