@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<form id="textForm">
+    <label for="name">물건의 이름</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="usedYear">사용한 연도</label>
+    <input type="number" id="usedYear" name="usedYear">
+    <br><br>
+    <button type="submit">전송</button>
+    <script>
+        document.getElementById('textForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const usedYear = document.getElementById('usedYear').value;
+            const payload = JSON.stringify({
+                name: name,
+                usedYear: usedYear
+            });
+
+            fetch('http://localhost:8080/stuff', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: payload
+            })
+        })
+    </script>
+</form>
+</body>
+</html>
